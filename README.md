@@ -1,1 +1,2 @@
-#jaime cervantes arrieta 
+#Jaime Cervantes Arrieta 
+#Endy Macea Aguirre
