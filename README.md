@@ -1,2 +1,5 @@
-# Jaime Cervantes Arrieta 
-# Endy Macea Aguirre
+# EDUCATION TEST
+
+## Integrantes
+### Jaime Cervantes Arrieta 
+### Endy Macea Aguirre
