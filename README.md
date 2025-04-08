@@ -3,4 +3,4 @@
 ## Integrantes
 ### Jaime Cervantes Arrieta 
 ### Endy Macea Aguirre
-### esteban santiago gonzalez 
+### Esteban Santiago Gonzalez 
