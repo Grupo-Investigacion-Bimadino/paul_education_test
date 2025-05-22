@@ -26,8 +26,7 @@ import { ArchivosModule } from './archivos/archivos.module';
   MongooseModule.forRootAsync({
     imports: [ConfigModule],
     useFactory: async () => ({
-      uri: process.env.DB_URI,
-    }),
+      uri: process.env.DB_URI,}),
     inject: [],
   }),
 ],
