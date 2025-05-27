@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import mongoose from 'mongoose';
 import { Document } from 'mongoose';
 
-@Schema({
+@Schema( {
     timestamps: true
 })
 
