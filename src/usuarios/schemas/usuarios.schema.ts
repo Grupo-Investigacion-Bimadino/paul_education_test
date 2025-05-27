@@ -29,7 +29,8 @@ export class User extends Document{
     picture: string;
 
     @Prop()
-    updatedAt: Date;    
+    updatedAt: Date; 
+        
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
