@@ -8,7 +8,7 @@ import { PreguntaSchema } from './schemas/preguntas.schema';
 
 @Injectable()
 export class PreguntasService {
-  constructor(@InjectModel(Pregunta.name) private PreguntaModel: Model<Pregunta>) {}
+  constructor(@InjectModel(Pregunta.name) private preguntaModel: Model<Pregunta>) {}
 
   async create(createPreguntaDto: CreatePreguntaDto): Promise<Pregunta> {
     const createdPregunta = new this.preguntaModel(createPreguntaDto);

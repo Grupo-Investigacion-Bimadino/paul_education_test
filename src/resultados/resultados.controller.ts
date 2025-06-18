@@ -19,16 +19,16 @@ export class ResultadosController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.resultadosService.findOne(+id);
+    return this.resultadosService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateResultadoDto: UpdateResultadoDto) {
-    return this.resultadosService.update(+id, updateResultadoDto);
+    return this.resultadosService.update(id, updateResultadoDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.resultadosService.remove(+id);
+    return this.resultadosService.remove(id);
   }
 }

@@ -19,16 +19,16 @@ export class RespuestasController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.respuestasService.findOne(+id);
+    return this.respuestasService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateRespuestaDto: UpdateRespuestaDto) {
-    return this.respuestasService.update(+id, updateRespuestaDto);
+    return this.respuestasService.update(id, updateRespuestaDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.respuestasService.remove(+id);
+    return this.respuestasService.remove(id);
   }
 }

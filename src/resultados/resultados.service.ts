@@ -1,26 +1,33 @@
 import { Injectable } from '@nestjs/common';
 import { CreateResultadoDto } from './dto/create-resultado.dto';
 import { UpdateResultadoDto } from './dto/update-resultado.dto';
+import { Resultado } from './schemas/resultados.schema';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
+import { ResultadoSchema } from './schemas/resultados.schema';
 
 @Injectable()
 export class ResultadosService {
-  create(createResultadoDto: CreateResultadoDto) {
-    return 'This action adds a new resultado';
+  constructor(@InjectModel(Resultado.name) private resultadoModel: Model<Resultado>) {}
+
+  async create(createResultadoDto: CreateResultadoDto): Promise<Resultado> {
+    const createdResultado = new this.resultadoModel(createResultadoDto);
+    return createdResultado.save();
   }
 
-  findAll() {
-    return `This action returns all resultados`;
+  async findAll(): Promise<Resultado[]> {
+    return this.resultadoModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} resultado`;
+  async findOne(id: string): Promise<Resultado | null> {
+    return this.resultadoModel.findById(id).exec();
   }
 
-  update(id: number, updateResultadoDto: UpdateResultadoDto) {
-    return `This action updates a #${id} resultado`;
+  async update(id: string, updateResultadoDto: UpdateResultadoDto): Promise<Resultado | null> {
+    return this.resultadoModel.findByIdAndUpdate(id, updateResultadoDto, { new: true }).exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} resultado`;
+  async remove(id: string): Promise<Resultado | null> {
+    return this.resultadoModel.findByIdAndDelete(id).exec()
   }
 }
