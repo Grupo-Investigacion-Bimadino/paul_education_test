@@ -13,13 +13,6 @@ import { ArchivosModule } from './archivos/archivos.module';
 
 @Module({
   imports: [
-    UsuariosModule,
-    ResultadosModule,
-    RespuestasModule,
-    PreguntasModule,
-    ExamenesModule,
-    ArchivosModule,
-    HerramientasModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -29,6 +22,13 @@ import { ArchivosModule } from './archivos/archivos.module';
       uri: process.env.DB_URI,}),
     inject: [],
   }),
+    UsuariosModule,
+    ResultadosModule,
+    RespuestasModule,
+    PreguntasModule,
+    ExamenesModule,
+    ArchivosModule,
+    HerramientasModule,
 ],
   controllers: [AppController],
   providers: [AppService],

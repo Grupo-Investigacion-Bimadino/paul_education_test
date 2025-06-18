@@ -1,26 +1,37 @@
 import { Injectable } from '@nestjs/common';
 import { CreateArchivoDto } from './dto/create-archivo.dto';
 import { UpdateArchivoDto } from './dto/update-archivo.dto';
+import { Archivo } from './schemas/archivos.schema';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
+import { ArchivoSchema } from './schemas/archivos.schema';
 
 @Injectable()
 export class ArchivosService {
-  create(createArchivoDto: CreateArchivoDto) {
-    return 'This action adds a new archivo';
+  constructor(@InjectModel(Archivo.name) private archivoModel: Model<Archivo>) {}
+
+  async create(createArchivoDto: CreateArchivoDto): Promise<Archivo> {
+    const createdArchivo = new this.archivoModel(createArchivoDto);
+    return createdArchivo.save();
   }
 
-  findAll() {
-    return `This action returns all archivos`;
+  async findAll(): Promise<Archivo[]> {
+    return this.archivoModel.find().populate('herramientas').exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} archivo`;
+  async findOne(id: string): Promise<Archivo | null> {
+    return this.archivoModel.findById(id).populate('herramientas').exec();
   }
 
-  update(id: number, updateArchivoDto: UpdateArchivoDto) {
-    return `This action updates a #${id} archivo`;
+  async findUserHerramientas(userId: string): Promise<Archivo | null> {
+    return this.archivoModel.findById(userId).populate('herramientas').exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} archivo`;
+  async update(id: string, updateArchivoDto: UpdateArchivoDto): Promise<Archivo | null> {
+    return this.archivoModel.findByIdAndUpdate(id, updateArchivoDto, { new: true }).exec();
+  }
+
+  async remove(id: string): Promise<Archivo | null> {
+    return this.archivoModel.findByIdAndDelete(id).exec()
   }
 }

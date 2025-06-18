@@ -19,16 +19,26 @@ export class ExamenesController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.examenesService.findOne(+id);
+    return this.examenesService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateExameneDto: UpdateExameneDto) {
-    return this.examenesService.update(+id, updateExameneDto);
+    return this.examenesService.update(id, updateExameneDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.examenesService.remove(+id);
+    return this.examenesService.remove(id);
+  }
+
+  @Get(':id/usuarios')
+  findUserUsuarios(@Param('id') id: string) {
+    return this.examenesService.findUserUsuarios(id);
+  }
+
+  @Get(':id/herramientas')
+  findUserHerramientas(@Param('id') id: string) {
+    return this.examenesService.findUserHerramientas(id);
   }
 }

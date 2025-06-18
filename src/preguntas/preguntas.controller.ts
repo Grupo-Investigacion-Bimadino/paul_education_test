@@ -19,16 +19,16 @@ export class PreguntasController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.preguntasService.findOne(+id);
+    return this.preguntasService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePreguntaDto: UpdatePreguntaDto) {
-    return this.preguntasService.update(+id, updatePreguntaDto);
+    return this.preguntasService.update(id, updatePreguntaDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.preguntasService.remove(+id);
+    return this.preguntasService.remove(id);
   }
 }

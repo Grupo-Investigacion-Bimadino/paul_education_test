@@ -19,16 +19,26 @@ export class HerramientasController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.herramientasService.findOne(+id);
+    return this.herramientasService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateHerramientaDto: UpdateHerramientaDto) {
-    return this.herramientasService.update(+id, updateHerramientaDto);
+    return this.herramientasService.update(id, updateHerramientaDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.herramientasService.remove(+id);
+    return this.herramientasService.remove(id);
+  }
+
+  @Get(':id/archivos')
+  findUserArchivos(@Param('id') id: string) {
+    return this.herramientasService.findUserArchivos(id);
+  }
+
+@Get(':id/examenes')
+  findUserExamenes(@Param('id') id: string) {
+    return this.herramientasService.findUserExamenes(id);
   }
 }
